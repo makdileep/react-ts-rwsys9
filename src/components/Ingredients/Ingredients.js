@@ -3,25 +3,9 @@ import IngredientList from './IngredientList';
 import IngredientForm from './IngredientForm';
 import Search from './Search';
 
-function Ingredients() {
+function Ingredients({name}) {
   const [userIngredient, setUserIngredient] = useState([]);
-
-  useEffect(()=>{
-    console.log('useEffect');
-    fetch('https://react-hooks-6e5a0-default-rtdb.firebaseio.com/ingrediants.json')
-    .then(response => response.json())
-    .then((responseData)=>{
-      const loadedIngrediants = [];
-      for(let key in responseData) {
-        loadedIngrediants.push({
-          id: key,
-          title: responseData[key].title,
-          amount: responseData[key].amount
-        })
-      }
-     setUserIngredient(loadedIngrediants)
-    })
-  },[])
+ 
   const onAddIngredient = (ingredient) => {
     fetch('https://react-hooks-6e5a0-default-rtdb.firebaseio.com/ingrediants.json', 
     {
@@ -41,15 +25,17 @@ function Ingredients() {
 
   };
 
+  const onHandleSearchItem = (searchIngrediants)=>{
+
+  }
   const removeItem = (this, id)=>{
     setUserIngredient(userIngredient.filter(ingrediant => ingrediant.id !== id))
   }
   return (
     <div className="App">
       <IngredientForm addIngredient={onAddIngredient} />
-
       <section>
-        <Search />
+        <Search handleSearchItem={onHandleSearchItem}/>
         <IngredientList ingredients={userIngredient} onRemoveItem={removeItem} />
         {/* Need to add list here! */}
       </section>
