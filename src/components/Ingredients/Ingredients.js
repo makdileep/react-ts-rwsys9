@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import IngredientList from './IngredientList';
 import IngredientForm from './IngredientForm';
 import Search from './Search';
 
-function Ingredients({name}) {
+function Ingredients() {
   const [userIngredient, setUserIngredient] = useState([]);
  
   const onAddIngredient = (ingredient) => {
@@ -25,9 +25,9 @@ function Ingredients({name}) {
 
   };
 
-  const onHandleSearchItem = (searchIngrediants)=>{
-    console.log(searchIngrediants)
-  }
+  const onHandleSearchItem = useCallback( (searchIngrediants)=>{
+    setUserIngredient(searchIngrediants)
+  },[])
   const removeItem = (this, id)=>{
     setUserIngredient(userIngredient.filter(ingrediant => ingrediant.id !== id))
   }

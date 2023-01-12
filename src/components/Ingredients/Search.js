@@ -25,7 +25,7 @@ const Search = React.memo(({ handleSearchItem }) => {
         }
         handleSearchItem(loadedIngrediants);
       });
-  }, [searchText]);
+  }, [searchText, handleSearchItem]);
 
   return (
     <section className="search">
