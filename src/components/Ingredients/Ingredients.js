@@ -26,7 +26,7 @@ function Ingredients({name}) {
   };
 
   const onHandleSearchItem = (searchIngrediants)=>{
-
+    console.log(searchIngrediants)
   }
   const removeItem = (this, id)=>{
     setUserIngredient(userIngredient.filter(ingrediant => ingrediant.id !== id))
