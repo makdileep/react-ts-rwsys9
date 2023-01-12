@@ -4,7 +4,7 @@ import Card from '../UI/Card';
 import './Search.css';
 
 const Search = React.memo(({ handleSearchItem }) => {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState('Apple');
   const inputRef = useRef();
   useEffect(() => {
     const timer = setTimeout(() => {
